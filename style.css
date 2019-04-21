@@ -21,15 +21,6 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /* Class selectors --------------------- */
-.container {
-    max-width: 40%;
-    background-color: rgba(240, 240, 240, 0.95);
-    border-radius: 20px;
-    margin-top: 20px;
-    margin-left: 20px;
-    padding: 25px;
-}
-
 .nav {
     margin-top: 50px;
     height: 40px;
@@ -58,8 +49,15 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: -2px;
 }
 
-.top-pic {
-    height: 
+.container {
+    max-width: 40%;
+    background-color: rgba(240, 240, 240, 0.95);
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    padding: 25px;
+    animation-name: load;
+    animation-duration: 3s;
 }
 
 .h1-content {
@@ -71,4 +69,9 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0;
     font-size: 12px;
     font-style: italic;
+}
+
+@keyframes load {
+    0% {margin-left: -45%;}
+    100% {margin-left: 20px;}
 }
