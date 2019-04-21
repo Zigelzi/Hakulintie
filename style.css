@@ -1,6 +1,9 @@
 
 
-/* Type selectors --------------------- */
+/* ------------------------
+Type selectors
+--------------------------- */
+
 html {
     background: url("img/background-picture.jpg ") no-repeat center center fixed;
     background-size: cover;
@@ -10,17 +13,22 @@ body {
     font-family: 'Lato', sans-serif;
     margin: 0;
     padding: 0;
+
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Merriweather', serif;
 }
 
-/* ID selectors --------------------- */
+/* ------------------------
+ ID selectors
+ -------------------------- */
 
 
 
-/* Class selectors --------------------- */
+/* ------------------------
+Class selectors
+--------------------------- */
 .nav {
     margin-top: 50px;
     height: 40px;
@@ -28,6 +36,9 @@ h1, h2, h3, h4, h5, h6 {
     background-color: rgba(50, 50, 50, 0.3)
 }
 .nav ul {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
     list-style-type: none;  
     margin: 0;
     padding: 0 0;
@@ -49,14 +60,20 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: -2px;
 }
 
-.container {
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+
+.box {
     max-width: 40%;
     background-color: rgba(240, 240, 240, 0.95);
     border-radius: 20px;
     margin-top: 20px;
     margin-left: 20px;
     padding: 25px;
-    animation-name: load;
+    animation-name: load-desktop;
     animation-duration: 3s;
 }
 
@@ -65,13 +82,53 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .subtext {
-    margin: 0;
+    margin-bottom: 5px;
     padding: 0;
     font-size: 12px;
     font-style: italic;
 }
 
-@keyframes load {
+.post {
+    margin: 25px 0 40px;
+}
+
+.post h3, p {
+    margin: 0;
+}
+
+/* ------------------------
+Animations and transitions
+--------------------------- */
+
+@keyframes load-desktop {
     0% {margin-left: -45%;}
     100% {margin-left: 20px;}
+}
+
+@keyframes load-mobile {
+    0% {margin-left: -250%;}
+    100% {margin-left: 5%;}
+}
+
+/* ------------------------
+Media queries
+--------------------------- */
+
+/* Small and Medium screens */
+@media only screen and (max-width: 850px) {
+
+    .flex-container {
+        justify-content: center;
+    }
+    .box {
+        max-width: 75%;
+        margin: 20px 5%;
+        animation: load-mobile;
+        animation-duration: 3s;
+    }
+
+    .nav ul {
+        justify-content: space-around;
+    }
+
 }
