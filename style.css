@@ -1,9 +1,12 @@
 
 
 /* Type selectors --------------------- */
-body{
-    background-color: bisque;
-    text-align: center;
+html {
+    background: url("img/background-picture.jpg ") no-repeat center center fixed;
+    background-size: cover;
+}
+
+body {
     font-family: 'Lato', sans-serif;
     margin: 0;
     padding: 0;
@@ -18,33 +21,54 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /* Class selectors --------------------- */
-.container{
-    padding: 0 20%;
+.container {
+    max-width: 40%;
+    background-color: rgba(240, 240, 240, 0.95);
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    padding: 25px;
 }
 
 .nav {
+    margin-top: 50px;
     height: 40px;
-    background-color: darkred;
     line-height: 36px;
+    background-color: rgba(50, 50, 50, 0.3)
 }
-.nav ul{
+.nav ul {
     list-style-type: none;  
     margin: 0;
     padding: 0 0;
 }
 
-.nav li{
+.nav li {
     display: inline-block;
-    height: 40px;
+    height: 38px;
     padding: 0 20px;
 }
-.nav a{
+.nav a {
     text-decoration: none;
-    color: bisque;
+    color: white;
 }
 
-.nav li:hover{
+.nav li:hover {
     color: firebrick;
-    border: 1px solid chartreuse;
-    margin: -1px;
+    border-bottom: 2px solid #fff;
+    margin-bottom: -2px;
+}
+
+.top-pic {
+    height: 
+}
+
+.h1-content {
+    margin: 0px;
+}
+
+.subtext {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-style: italic;
 }
