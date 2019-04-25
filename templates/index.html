@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<head>
+    <meta lang="en-GB">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Merriweather" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    <title>Hakulinpuisto</title>
+</head>
+<body>
+    <nav class="nav">
+        <ul>
+            <li>
+                <a href="#">Etusivu</a>
+            </li>
+            <li>
+                <a href="#">Vuosikello</a>
+            </li>
+            <li>
+                <a href="#">Yhteystiedot</a>
+            </li>
+        </ul>
+    </nav>
+    <!-- Start of Introduction -->
+    <div class="flex-container">
+        <div class="box">
+            <h1 class="h1-content">
+            AsOy Hakulinpuisto
+            </h1>
+            <a class="subtext" href="https://goo.gl/maps/t1fybqJoUtZ5CSkx7"><img src="{{ url_for('static', filename='img/gmaps_ico.png') }}" alt="Google Maps icon" id="gmaps">Hakulintie 43, 08500 Lohja</a>
+            <div class="post">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Esse hic veritatis adipisci ad, repellat in dolores eos. 
+                    Nulla quae delectus aspernatur ipsa molestiae <a href="#"></a> veniam, at, 
+                    exercitationem iure, debitis iste repellat.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- End of Introduction -->
+
+    <!-- Start of Tiedotteet -->
+    <div class="flex-container">
+        <div class="box">
+                <h1 class="h1-content">
+                        Tiedotteet
+                </h1>
+            <div class="post">
+                <h3>Esimerkkitiedote </h3>
+                <p class="subtext">Julkaistu: 21.4.2019 16:00</p>
+                <p id= "post1">
+                    Testitiedote. Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Quo nihil tempora cupiditate, unde fugit consectetur aut quam molestiae 
+                    veritatis distinctio temporibus dolorem, qui reiciendis corporis nemo odit 
+                    animi sapiente ipsa.
+                </p>
+            </div>
+            <div class="post">
+                <h3>Esimerkkitiedote </h3>
+                <p class="subtext">Julkaistu: 21.4.2019 16:00</p>
+                <p>
+                    Testitiedote. Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Quo nihil tempora cupiditate, unde fugit consectetur aut quam molestiae 
+                    veritatis distinctio temporibus dolorem, qui reiciendis corporis nemo odit 
+                    animi sapiente ipsa.
+                </p>
+            </div>
+            <div class="post">
+                <h3>Esimerkkitiedote </h3>
+                <p class="subtext">Julkaistu: 21.4.2019 16:00</p>
+                <p>
+                    Testitiedote. Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Quo nihil tempora cupiditate, unde fugit consectetur aut quam molestiae 
+                    veritatis distinctio temporibus dolorem, qui reiciendis corporis nemo odit 
+                    animi sapiente ipsa.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- End of Tiedotteet -->
+</body>
