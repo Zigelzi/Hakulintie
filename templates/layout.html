@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta lang="en-GB">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <link href="https://fonts.googleapis.com/css?family=Lato|Merriweather" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <script type="text/javascript" src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+        <title>Hakulinpuisto</title>
+    </head>
+    <body>
+        <nav class="nav">
+            <ul>
+                <li>
+                    <a href="{{ url_for('index') }}">Etusivu</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('vuosikello') }}">Vuosikello</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('yhteystiedot') }}">Yhteystiedot</a>
+                </li>
+            </ul>
+        </nav>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>
