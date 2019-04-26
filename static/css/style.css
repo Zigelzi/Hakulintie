@@ -40,7 +40,7 @@ Class selectors
     margin-top: 50px;
     height: 40px;
     line-height: 36px;
-    background-color: rgba(50, 50, 50, 0.3)
+    background:linear-gradient(90deg, rgba(50, 50, 50, 0.8), transparent 50%)
 }
 .nav ul {
     display: flex;
@@ -62,9 +62,12 @@ Class selectors
 }
 
 .nav li:hover {
-    color: firebrick;
     border-bottom: 2px solid #fff;
     margin-bottom: -2px;
+}
+
+.active-nav {
+    border-bottom:2px solid firebrick;
 }
 
 .flex-container {

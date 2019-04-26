@@ -7,18 +7,23 @@
         <link href="https://fonts.googleapis.com/css?family=Lato|Merriweather" rel="stylesheet">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
         <script type="text/javascript" src="{{ url_for('static', filename='js/scripts.js') }}"></script>
-        <title>Hakulinpuisto</title>
+        
+        {% if title %}
+            <title>Hakulinpuisto - {{ title }}</title>    
+        {% else %}
+            <title>Hakulinpuisto</title>
+        {% endif %}
     </head>
     <body>
         <nav class="nav">
             <ul>
-                <li>
+                <li class="{% if active=='index' %}active-nav{% endif %}">
                     <a href="{{ url_for('index') }}">Etusivu</a>
                 </li>
-                <li>
+                <li class="{% if active=='vuosikello' %}active-nav{% endif %}">
                     <a href="{{ url_for('vuosikello') }}">Vuosikello</a>
                 </li>
-                <li>
+                <li class="{% if active=='yhteystiedot' %}active-nav{% endif %}">
                     <a href="{{ url_for('yhteystiedot') }}">Yhteystiedot</a>
                 </li>
             </ul>

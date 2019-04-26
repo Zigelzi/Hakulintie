@@ -1,17 +1,18 @@
 from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template('index.html')
+    return render_template('index.html', active='index')
 
 @app.route("/vuosikello")
 def vuosikello():
-    return render_template('vuosikello.html')
+    return render_template('vuosikello.html', title='Vuosikello', active='vuosikello')
 
 @app.route("/yhteystiedot")
 def yhteystiedot():
-    return render_template('yhteystiedot.html')
+    return render_template('yhteystiedot.html', title='Yhteystiedot', active='yhteystiedot')
 
 if __name__ == '__main__':
     app.run(debug=True)
