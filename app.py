@@ -14,5 +14,9 @@ def vuosikello():
 def yhteystiedot():
     return render_template('yhteystiedot.html', title='Yhteystiedot', active='yhteystiedot')
 
+@app.route("/kirjaudu")
+def kirjaudu():
+    return render_template('kirjaudu.html' title='Kirjaudu')
+
 if __name__ == '__main__':
     app.run(debug=True)
