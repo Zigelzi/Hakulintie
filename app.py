@@ -2,6 +2,8 @@ from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
+app.config['SECRET_KEY'] = '412ace50dc2f0e25f469ab1c9f457a02'
+
 @app.route("/")
 def index():
     return render_template('index.html', active='index')
