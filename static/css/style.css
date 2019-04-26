@@ -29,6 +29,10 @@ h1, h2, h3, h4, h5, h6 {
     height: 15px;
 }
 
+#email {
+    font-style: italic;
+}
+
 /* ------------------------
 Class selectors
 --------------------------- */
@@ -99,6 +103,10 @@ Class selectors
 
 .post h3, p {
     margin: 0;
+}
+
+.yhteystiedot p {
+    margin-bottom: 15px;
 }
 
 /* ------------------------
