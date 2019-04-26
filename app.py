@@ -1,8 +1,10 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
+from os import environ
+from forms import Rekisteroidy, Kirjaudu
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = '412ace50dc2f0e25f469ab1c9f457a02'
+app.config['SECRET_KEY'] = environ['SECRET_KEY']
 
 @app.route("/")
 def index():
@@ -16,9 +18,15 @@ def vuosikello():
 def yhteystiedot():
     return render_template('yhteystiedot.html', title='Yhteystiedot', active='yhteystiedot')
 
+@app.route('/rekisteroidy')
+def rekisteroidy():
+    form = Rekisteroidy()
+    return render_template('rekisteroidy.html', title='Rekisteröidy', form=form)
+
 @app.route("/kirjaudu")
 def kirjaudu():
-    return render_template('kirjaudu.html' title='Kirjaudu')
+    form = Kirjaudu()
+    return render_template('kirjaudu.html', title='Kirjaudu', form=form)
 
 if __name__ == '__main__':
     app.run(debug=True)
