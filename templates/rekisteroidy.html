@@ -1,22 +1,24 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <div>
+
+<div class="flex-container">
+    <div class="box">
         <form action="" method="POST">
             {{ form.hidden_tag() }}
             <fieldset>
                 <legend>
                     Rekisteröidy käyttäjäksi
                 </legend>
-                <div>
+                <div class="input-box">
                     {{ form.email.label }}
                     {{ form.email }}
                 </div>
-                <div>
+                <div class="input-box">
                     {{ form.password.label }}
                     {{ form.password }}
                 </div>
-                <div>
+                <div class="input-box">
                     {{ form.confirm_pw.label }}
                     {{ form.confirm_pw }}
                 </div>
@@ -28,4 +30,5 @@
         <div>
         </div>
     </div>
+</div>
 {% endblock %}

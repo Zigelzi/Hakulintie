@@ -19,6 +19,9 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Merriweather', serif;
 }
+fieldset {
+    padding: 25px;
+}
 
 /* ------------------------
  ID selectors
@@ -33,14 +36,14 @@ h1, h2, h3, h4, h5, h6 {
     font-style: italic;
 }
 
-/* ------------------------
+/* ------------------------linear-gradient(90deg, 
 Class selectors
 --------------------------- */
 .nav {
     margin-top: 50px;
     height: 40px;
     line-height: 36px;
-    background:linear-gradient(90deg, rgba(50, 50, 50, 0.8), transparent 50%)
+    background:rgba(50, 50, 50, 0.8)
 }
 .nav ul {
     display: flex;
@@ -112,6 +115,18 @@ Class selectors
     margin-bottom: 15px;
 }
 
+.input-box {
+    margin-bottom: 15px;
+}
+
+.input-box label {
+    max-width: 49%;
+}
+.input-box input {
+    float: right;
+    max-width: 50%;
+}
+
 /* ------------------------
 Animations and transitions
 --------------------------- */
@@ -145,6 +160,27 @@ Media queries
 
     .nav ul {
         justify-content: space-around;
+        
     }
 
+}
+
+@media only screen and (max-width: 465px){
+    
+    .input-box label {
+        display: block;
+        margin-bottom: 5px;
+        max-width: 90%;
+    }
+    
+    .input-box input {
+        display: block;
+        float:none;
+        max-width: 90%;
+    }
+    
+    .nav {
+        margin-top: 0px;
+        
+    }
 }

@@ -18,7 +18,7 @@ def vuosikello():
 def yhteystiedot():
     return render_template('yhteystiedot.html', title='Yhteystiedot', active='yhteystiedot')
 
-@app.route('/rekisteroidy')
+@app.route('/rekisteroidy', methods=["GET", "POST"])
 def rekisteroidy():
     form = Rekisteroidy()
     return render_template('rekisteroidy.html', title='Rekisteröidy', form=form)
