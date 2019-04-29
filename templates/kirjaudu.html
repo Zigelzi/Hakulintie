@@ -2,6 +2,34 @@
 
 {% block content %}
 
+<div class="flex-container">
+    <div class="box">
+        <form action="" method="POST">
+            {{ form.hidden_tag() }}
+            <fieldset>
+                <legend>
+                    Kirjaudu sisään
+                </legend>
+                <div class="input-box">
+                    {{ form.email.label }}
+                    {{ form.email }}
+                </div>
+                <div class="input-box">
+                    {{ form.password.label }}
+                    {{ form.password }}
+                </div>
+                <div class="input-box">
+                    {{ form.remember.label }}
+                    {{ form.remember }}
+                </div>
+            </fieldset>
+            <div>
+                {{ form.submit }}
+            </div>
+        </form>
+        <div>
+        </div>
+    </div>
+</div>
 
-
-{% block content %}
+{% endblock %}

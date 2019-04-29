@@ -127,6 +127,16 @@ Class selectors
     max-width: 50%;
 }
 
+.error {
+    background-color: red;
+    max-width: 100%;
+    font-size: 0.875rem;
+}
+
+.success {
+    background-color: aquamarine;
+}
+
 /* ------------------------
 Animations and transitions
 --------------------------- */

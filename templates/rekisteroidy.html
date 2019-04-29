@@ -12,14 +12,41 @@
                 </legend>
                 <div class="input-box">
                     {{ form.email.label }}
+                    {% if form.email.errors %}
+                        <div class="error">
+                            {% for error in form.email.errors %}
+                                <span>
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                     {{ form.email }}
                 </div>
                 <div class="input-box">
                     {{ form.password.label }}
+                        {% if form.password.errors %}
+                        <div class="error">
+                            {% for error in form.password.errors %}
+                                <span>
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                     {{ form.password }}
                 </div>
                 <div class="input-box">
                     {{ form.confirm_pw.label }}
+                    {% if form.confirm_pw.errors %}
+                        <div class="error">
+                            {% for error in form.confirm_pw.errors %}
+                                <span>
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                     {{ form.confirm_pw }}
                 </div>
             </fieldset>

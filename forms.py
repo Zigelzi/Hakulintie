@@ -5,18 +5,18 @@ from wtforms.validators import DataRequired, Email, Length, EqualTo
 
 class Rekisteroidy(FlaskForm):
     email = StringField('Sähköposti',
-                            validators=[DataRequired(), Email()])
+                            validators=[DataRequired(), Email(message="Ei voimassa oleva sähköposti")])
     password = PasswordField('Salasana',
                             validators=[DataRequired(),
-                            Length(min=8, message="Salasanan täytyy olla vähintään 8 merkkiä pitkä.")])
+                            Length(min=8, message="Salasanan täytyy olla vähintään 8 merkkiä pitkä")])
     confirm_pw = PasswordField('Vahvista salasana',
-                            validators= [DataRequired(), EqualTo('password')])
+                            validators= [DataRequired(), EqualTo('password', message="Salasana ei täsmää")])
     submit = SubmitField('Luo tunnus')
     
 
 class Kirjaudu(FlaskForm):
     email = StringField('Sähköposti',
-                            validators=[DataRequired(), Email()])
+                            validators=[DataRequired(), Email(message="Ei voimassa oleva sähköposti")])
     password = PasswordField('Salasana',
                             validators=[DataRequired()])
     remember = BooleanField('Muista minut')

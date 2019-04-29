@@ -26,8 +26,25 @@
                 <li class="{% if active=='yhteystiedot' %}active-nav{% endif %}">
                     <a href="{{ url_for('yhteystiedot') }}">Yhteystiedot</a>
                 </li>
+                <li class="{% if active=='kirjaudu' %}active-nav{% endif %}">
+                    <a href="{{ url_for('kirjaudu') }}">Kirjaudu</a>
+                </li>
+                <li class="{% if active=='rekisteroidy' %}active-nav{% endif %}">
+                    <a href="{{ url_for('rekisteroidy') }}">Rekisteröidy</a>
+                </li>
             </ul>
         </nav>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                <div class="success">
+                    {{ message }}
+                </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
         {% block content %}
         {% endblock %}
     </body>
