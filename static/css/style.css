@@ -128,8 +128,9 @@ Class selectors
 }
 
 .error {
-    background-color: red;
+    color: red;
     max-width: 100%;
+    font-style: italic;
     font-size: 0.875rem;
 }
 
