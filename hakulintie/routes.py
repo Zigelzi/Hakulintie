@@ -1,6 +1,8 @@
 from flask import render_template, flash, redirect, url_for
-from hakulintie import app
+from hakulintie import app, db, bcrypt
 from hakulintie.forms import Rekisteroidy, Kirjaudu
+from hakulintie.models import Users, Posts
+
 
 
 @app.route("/")
@@ -22,8 +24,19 @@ def yhteystiedot():
 def rekisteroidy():
     form = Rekisteroidy()
     if form.validate_on_submit():
-        flash(f'Account created for {form.email.data}!', 'success')
-        return redirect(url_for('index'))
+        # Hash the given PW to enter it to database
+        hash_pw = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+
+        # Take the form input and create db entry and commit it
+        user = Users(first_name=form.first_name.data,
+                     last_name=form.last_name.data,
+                     house=form.house.data,
+                     email=form.email.data,
+                     password=hash_pw)
+        db.session.add(user)
+        db.session.commit()
+        flash(f'Tunnuksesi on luotu, voit nyt kirjautua sisään.')
+        return redirect(url_for('kirjaudu'))
     return render_template('rekisteroidy.html', title='Rekisteröidy', form=form)
 
 
