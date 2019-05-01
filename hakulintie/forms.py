@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
-from wtforms.validators import DataRequired, Email, Length, EqualTo
+from wtforms.validators import DataRequired, Email, Length, EqualTo, ValidationError
+from hakulintie.models import Users
 
 
 # Form for registering new users.
@@ -19,12 +20,22 @@ class Rekisteroidy(FlaskForm):
                                validators= [DataRequired(), EqualTo('password', message="Salasana ei täsmää")])
     submit = SubmitField('Luo tunnus')
 
+    # Custom validation to validate that email is not in use
+    def validate_email(self, email):
+
+        # Get the email from the form and query the DB for it
+        email = Users.query.filter_by(email=email.data).first()
+
+        # If the DB query returns something, raise validation error
+        if email:
+            raise ValidationError('Tämä sähköpostiosoite on jo käytössä.')
+
 
 # Form for logging in to the site.
 class Kirjaudu(FlaskForm):
     email = StringField('Sähköposti',
-                            validators=[DataRequired(), Email(message="Ei voimassa oleva sähköposti")])
+                        validators=[DataRequired(), Email(message="Ei voimassa oleva sähköposti")])
     password = PasswordField('Salasana',
-                            validators=[DataRequired()])
+                             validators=[DataRequired()])
     remember = BooleanField('Muista minut')
     submit = SubmitField('Kirjaudu sisään')

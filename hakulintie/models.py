@@ -1,8 +1,13 @@
 from datetime import datetime
-from hakulintie import db
+from hakulintie import db, login_manager
+from flask_login import UserMixin
+
+@login_manager.user_loader
+def load_user(user_id):
+    return Users.query.get(int(user_id))
 
 # Creating the user and post table models
-class Users(db.Model):
+class Users(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(30), nullable=False)
     last_name = db.Column(db.String(30), nullable=False)
@@ -13,6 +18,7 @@ class Users(db.Model):
 
     def __repr__(self):
         return f'User <{self.email} | {self.first_name} | {self.last_name} | {self.house}>'
+
 
 class Posts(db.Model):
     id = db.Column(db.Integer, primary_key=True)

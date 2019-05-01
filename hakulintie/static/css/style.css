@@ -86,8 +86,8 @@ Class selectors
     margin-top: 20px;
     margin-left: 20px;
     padding: 25px;
-    animation-name: load-desktop;
-    animation-duration: 1.5s;
+    /* animation-name: load-desktop;
+    animation-duration: 1.5s; */
 }
 
 .h1-content {

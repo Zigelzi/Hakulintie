@@ -2,7 +2,7 @@ from flask import render_template, flash, redirect, url_for
 from hakulintie import app, db, bcrypt
 from hakulintie.forms import Rekisteroidy, Kirjaudu
 from hakulintie.models import Users, Posts
-
+from flask_login import login_user, current_user
 
 
 @app.route("/")
@@ -22,6 +22,11 @@ def yhteystiedot():
 
 @app.route('/rekisteroidy', methods=["GET", "POST"])
 def rekisteroidy():
+
+    # If current user exists, redirect to home.
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+
     form = Rekisteroidy()
     if form.validate_on_submit():
         # Hash the given PW to enter it to database
@@ -42,5 +47,17 @@ def rekisteroidy():
 
 @app.route("/kirjaudu", methods=["GET", "POST"])
 def kirjaudu():
+    # If current user exists, redirect to home.
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+
     form = Kirjaudu()
+
+    if form.validate_on_submit():
+        user = Users.query.filter_by(email=form.email.data).first()
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
+            login_user(user, remember=form.remember.data)
+            return redirect(url_for('index'))
+        else:
+            flash('Kirjautuminen epäonnistui. Tarkasta käyttäjänimi ja salasana.')
     return render_template('kirjaudu.html', title='Kirjaudu', form=form)
