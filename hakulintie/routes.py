@@ -2,7 +2,7 @@ from flask import render_template, flash, redirect, url_for
 from hakulintie import app, db, bcrypt
 from hakulintie.forms import Rekisteroidy, Kirjaudu
 from hakulintie.models import Users, Posts
-from flask_login import login_user, current_user
+from flask_login import login_user, current_user, logout_user
 
 
 @app.route("/")
@@ -61,3 +61,8 @@ def kirjaudu():
         else:
             flash('Kirjautuminen epäonnistui. Tarkasta käyttäjänimi ja salasana.')
     return render_template('kirjaudu.html', title='Kirjaudu', form=form)
+
+@app.route('/kirjaudu_ulos')
+def kirjaudu_ulos():
+    logout_user()
+    return redirect(url_for('index'))

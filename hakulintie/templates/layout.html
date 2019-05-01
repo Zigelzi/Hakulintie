@@ -26,12 +26,18 @@
                 <li class="{% if active=='yhteystiedot' %}active-nav{% endif %}">
                     <a href="{{ url_for('yhteystiedot') }}">Yhteystiedot</a>
                 </li>
+                {% if current_user.is_authenticated %}
+                <li class="">
+                    <a href="{{ url_for('kirjaudu_ulos') }}">Kirjaudu ulos</a>
+                </li>
+                {% else %}
                 <li class="{% if active=='kirjaudu' %}active-nav{% endif %}">
                     <a href="{{ url_for('kirjaudu') }}">Kirjaudu</a>
                 </li>
                 <li class="{% if active=='rekisteroidy' %}active-nav{% endif %}">
                     <a href="{{ url_for('rekisteroidy') }}">Rekisteröidy</a>
                 </li>
+                {% endif %}
             </ul>
         </nav>
 
