@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="box">
+    <div>
+        <h3>
+            Nimi
+        </h3>
+        <p>
+            {{ current_user.first_name }} {{ current_user.last_name }}
+        </p>
+    </div>
+    <div>
+        <h3>
+            Sähköposti
+        </h3>
+        <p>
+            {{ current_user.email }}
+        </p>
+    </div>
+    <div>
+        <h3>
+            Asunto
+        </h3>
+        <p>
+            {{ current_user.house }}
+        </p>
+    </div>
+</div>
+
+
+{% endblock %}

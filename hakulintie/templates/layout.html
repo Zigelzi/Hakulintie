@@ -28,6 +28,9 @@
                 </li>
                 {% if current_user.is_authenticated %}
                 <li class="">
+                    <a href="{{ url_for('tili') }}">Tili</a>
+                </li>
+                <li class="">
                     <a href="{{ url_for('kirjaudu_ulos') }}">Kirjaudu ulos</a>
                 </li>
                 {% else %}
