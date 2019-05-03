@@ -21,6 +21,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 fieldset {
     padding: 25px;
+    border: none;
+}
+
+fieldset legend {
+    font-size: 1.5rem; /* 24 / 16 px */
+    font-weight: 500;
 }
 
 /* ------------------------
@@ -36,7 +42,7 @@ fieldset {
     font-style: italic;
 }
 
-/* ------------------------linear-gradient(90deg, 
+/* ------------------------
 Class selectors
 --------------------------- */
 .nav {
@@ -70,7 +76,7 @@ Class selectors
 }
 
 .active-nav {
-    border-bottom:2px solid firebrick;
+    border-bottom:2px solid #7b2d26;
 }
 
 .flex-container {
@@ -81,13 +87,15 @@ Class selectors
 
 .box {
     max-width: 40%;
-    background-color: rgba(240, 240, 240, 0.95);
+    background-color: rgba(240, 240, 240, 0.95); /* HEX: #F0F0F0 */
     border-radius: 20px;
     margin-top: 20px;
     margin-left: 20px;
     padding: 25px;
-    /* animation-name: load-desktop;
-    animation-duration: 1.5s; */
+    /*
+    animation-name: load-desktop;
+    animation-duration: 1.5s;
+    */
 }
 
 .h1-content {
@@ -116,15 +124,29 @@ Class selectors
 }
 
 .input-box {
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 
 .input-box label {
-    max-width: 49%;
+    display: block;
+    margin-bottom: 5px;
 }
 .input-box input {
-    float: right;
-    max-width: 50%;
+    background: transparent;
+    border:none;
+    border-bottom: 1px dashed black;
+    height: 25px;
+    width: 100%;
+}
+.input-box input[type=checkbox] {
+    width: initial;
+    height: initial;
+    background: transparent;
+}
+
+
+.input-box input:focus {
+    border-bottom: 1px solid #007fff;
 }
 
 .error {
@@ -165,8 +187,10 @@ Media queries
     .box {
         max-width: 75%;
         margin: 20px 5%;
+        /*
         animation: load-mobile;
         animation-duration: 1.5s;
+        */
     }
 
     .nav ul {

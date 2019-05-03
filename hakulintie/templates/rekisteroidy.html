@@ -12,7 +12,7 @@
                 </legend>
                 <div class="input-box">
                     {{ form.first_name.label }}
-                    {{ form.first_name }}
+                    {{ form.first_name(placeholder="Syötä etunimesi") }}
                     {% if form.first_name.errors %}
                         <div class="error">
                             {% for error in form.first_name.errors %}
@@ -26,7 +26,7 @@
                 </div>
                 <div class="input-box">
                     {{ form.last_name.label }}
-                    {{ form.last_name }}
+                    {{ form.last_name(placeholder="Syötä sukunimesi") }}
                     {% if form.last_name.errors %}
                         <div class="error">
                             {% for error in form.last_name.errors %}
@@ -40,7 +40,7 @@
                 </div>
                 <div class="input-box">
                     {{ form.house.label }}
-                    {{ form.house }}
+                    {{ form.house(placeholder="Asuntosi numero") }}
                     {% if form.house.errors %}
                         <div class="error">
                             {% for error in form.house.errors %}
@@ -55,7 +55,7 @@
 
                 <div class="input-box">
                     {{ form.email.label }}
-                    {{ form.email }}
+                    {{ form.email(placeholder="Syötä sähköpostiosoitteesi") }}
                     {% if form.email.errors %}
                         <div class="error">
                             {% for error in form.email.errors %}
@@ -69,7 +69,7 @@
                 </div>
                 <div class="input-box">
                     {{ form.password.label }}
-                    {{ form.password }}
+                    {{ form.password(placeholder="Syötä vähintään 8 merkkiä pitkä salasana") }}
                         {% if form.password.errors %}
                         <div class="error">
                             {% for error in form.password.errors %}
@@ -83,7 +83,7 @@
                 </div>
                 <div class="input-box">
                     {{ form.confirm_pw.label }}
-                    {{ form.confirm_pw }}
+                    {{ form.confirm_pw(placeholder="Vahvista salasana") }}
                     {% if form.confirm_pw.errors %}
                         <div class="error">
                             {% for error in form.confirm_pw.errors %}
