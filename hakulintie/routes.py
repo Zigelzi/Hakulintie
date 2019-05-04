@@ -1,6 +1,6 @@
 from flask import render_template, flash, redirect, url_for, request
 from hakulintie import app, db, bcrypt
-from hakulintie.forms import Rekisteroidy, Kirjaudu
+from hakulintie.forms import Rekisteroidy, Kirjaudu, PaivitaTili
 from hakulintie.models import Users, Posts
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -78,4 +78,5 @@ def kirjaudu_ulos():
 # login_required decorator used to show that this page requires logged in user. Configuration in __init__.py
 @login_required
 def tili():
-    return render_template('tili.html', title='Tilini', active='tili')
+    form = PaivitaTili()
+    return render_template('tili.html', title='Tilini', active='tili', form=form)
