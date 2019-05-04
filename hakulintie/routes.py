@@ -78,4 +78,4 @@ def kirjaudu_ulos():
 # login_required decorator used to show that this page requires logged in user. Configuration in __init__.py
 @login_required
 def tili():
-    return render_template('tili.html', title='Tilini')
+    return render_template('tili.html', title='Tilini', active='tili')

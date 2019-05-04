@@ -16,32 +16,37 @@
     </head>
     <body>
         <nav class="nav">
-            <ul>
-                <li class="{% if active=='index' %}active-nav{% endif %}">
-                    <a href="{{ url_for('index') }}">Etusivu</a>
-                </li>
-                <li class="{% if active=='vuosikello' %}active-nav{% endif %}">
-                    <a href="{{ url_for('vuosikello') }}">Vuosikello</a>
-                </li>
-                <li class="{% if active=='yhteystiedot' %}active-nav{% endif %}">
-                    <a href="{{ url_for('yhteystiedot') }}">Yhteystiedot</a>
-                </li>
-                {% if current_user.is_authenticated %}
-                <li class="">
-                    <a href="{{ url_for('tili') }}">Tili</a>
-                </li>
-                <li class="">
-                    <a href="{{ url_for('kirjaudu_ulos') }}">Kirjaudu ulos</a>
-                </li>
-                {% else %}
-                <li class="{% if active=='kirjaudu' %}active-nav{% endif %}">
-                    <a href="{{ url_for('kirjaudu') }}">Kirjaudu</a>
-                </li>
-                <li class="{% if active=='rekisteroidy' %}active-nav{% endif %}">
-                    <a href="{{ url_for('rekisteroidy') }}">Rekisteröidy</a>
-                </li>
-                {% endif %}
+            <ul class="nav-left">
+                <div class="nav-left">
+                    <li class="{% if active=='index' %}active-nav{% endif %}">
+                        <a href="{{ url_for('index') }}">Etusivu</a>
+                    </li>
+                    <li class="{% if active=='vuosikello' %}active-nav{% endif %}">
+                        <a href="{{ url_for('vuosikello') }}">Vuosikello</a>
+                    </li>
+                    <li class="{% if active=='yhteystiedot' %}active-nav{% endif %}">
+                        <a href="{{ url_for('yhteystiedot') }}">Yhteystiedot</a>
+                    </li>
+                </div>
+                <div class="nav-right">
+                    {% if current_user.is_authenticated %}
+                    <li class=" {% if active=='tili' %}active-nav{% endif %}">
+                        <a href="{{ url_for('tili') }}">Tili</a>
+                    </li>
+                    <li >
+                        <a href="{{ url_for('kirjaudu_ulos') }}">Kirjaudu ulos</a>
+                    </li>
+                    {% else %}
+                    <li class=" {% if active=='kirjaudu' %}active-nav{% endif %}">
+                        <a href="{{ url_for('kirjaudu') }}">Kirjaudu</a>
+                    </li>
+                    <li class=" {% if active=='rekisteroidy' %}active-nav{% endif %}">
+                        <a href="{{ url_for('rekisteroidy') }}">Rekisteröidy</a>
+                    </li>
+                    {% endif %}
+                </div>
             </ul>
+            
         </nav>
 
         {% with messages = get_flashed_messages(with_categories=true) %}

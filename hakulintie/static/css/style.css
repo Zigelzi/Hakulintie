@@ -50,15 +50,15 @@ Class selectors
     margin-top: 50px;
     height: 40px;
     line-height: 36px;
-    background:rgba(50, 50, 50, 0.8)
+    background:rgba(50, 50, 50, 0.8);
 }
 .nav ul {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
     list-style-type: none;  
     margin: 0;
     padding: 0 0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
 }
 
 .nav li {
@@ -66,6 +66,7 @@ Class selectors
     height: 38px;
     padding: 0 20px;
 }
+
 .nav a {
     text-decoration: none;
     color: white;
@@ -76,6 +77,11 @@ Class selectors
     margin-bottom: -2px;
 }
 
+.nav-left,
+.nav-right {
+    display: inline-block;
+}
+
 .active-nav {
     border-bottom:2px solid #7b2d26;
 }
@@ -83,10 +89,14 @@ Class selectors
 .flex-container {
     display: flex;
     flex-flow: row wrap;
+}
+
+.flex-start {
     justify-content: flex-start;
 }
 
 .box {
+    min-width: 30%;
     max-width: 40%;
     background-color: rgba(240, 240, 240, 0.95); /* HEX: #F0F0F0 */
     border-radius: 20px;
