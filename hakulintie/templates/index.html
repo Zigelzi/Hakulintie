@@ -23,35 +23,16 @@
                 <h1 class="h1-content">
                         Tiedotteet
                 </h1>
+            {% for tiedote in tiedotteet %}
             <div class="post">
-                <h3>Esimerkkitiedote </h3>
-                <p class="subtext">Julkaistu: 21.4.2019 16:00</p>
-                <p id= "post1">
-                    Testitiedote. Tähän tulisi tiedotteita niin, että ne olisivat uusimmasta vanhimpaan ylhäältä
-                    alas.
-                </p>
-            </div>
-            <div class="post">
-                <h3>Esimerkkitiedote </h3>
-                <p class="subtext">Julkaistu: 21.4.2019 16:00</p>
+                <h3>{{ tiedote.title }} </h3>
+                <p class="subtext">Julkaistu: {{ tiedote.date_posted.strftime('%d %m %Y').replace(' ', '.') }} - Tekijä {{ tiedote.author.first_name }} {{ tiedote.author.last_name }}  </p>
+                <p class="subtext"></p>
                 <p>
-                    Testitiedote. Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Quo nihil tempora cupiditate, unde fugit consectetur aut quam molestiae 
-                    veritatis distinctio temporibus dolorem, qui reiciendis corporis nemo odit 
-                    animi sapiente ipsa.
+                    {{ tiedote.content }}
                 </p>
-            </div>
-            <div class="post">
-                <h3>Esimerkkitiedote </h3>
-                <p class="subtext">Julkaistu: 21.4.2019 16:00</p>
-                <p>
-                    Testitiedote. Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Quo nihil tempora cupiditate, unde fugit consectetur aut quam molestiae 
-                    veritatis distinctio temporibus dolorem, qui reiciendis corporis nemo odit 
-                    animi sapiente ipsa.
-                </p>
-            </div>
-        </div>
+            </div> 
+            {% endfor %} 
     </div>
     <!-- End of Tiedotteet -->
 {% endblock %}

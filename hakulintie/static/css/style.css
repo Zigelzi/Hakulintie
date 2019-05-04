@@ -57,6 +57,7 @@ textarea {
     border: none;
     width: 100%;
     resize: vertical;
+    height: 150px;
 }
 
 /* ------------------------
@@ -125,8 +126,7 @@ Class selectors
 }
 
 .box {
-    min-width: 30%;
-    max-width: 40%;
+    width: 40%;
     background-color: rgba(240, 240, 240, 0.95); /* HEX: #F0F0F0 */
     border-radius: 20px;
     margin-top: 20px;
@@ -155,12 +155,16 @@ Class selectors
 }
 
 .subtext {
-    margin-bottom: 5px;
+    margin-bottom: 0;
     padding: 0;
     font-size: 0.875rem;
     font-style: italic;
     text-decoration: none;
     color: black;
+}
+
+.subtext + .subtext {
+    margin-bottom: 5px;
 }
 
 .post {
@@ -298,7 +302,7 @@ Media queries
         justify-content: center;
     }
     .box {
-        max-width: 75%;
+        width: 75%;
         margin: 20px 5%;
         /*
         animation: load-mobile;
@@ -324,11 +328,14 @@ Media queries
     .input-box input {
         display: block;
         float:none;
-        max-width: 90%;
+        max-width: 100%;
     }
     
     .nav {
         margin-top: 0px;
         
+    }
+    .box {
+        width: 75%;
     }
 }

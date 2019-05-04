@@ -7,7 +7,9 @@ from flask_login import login_user, current_user, logout_user, login_required
 
 @app.route("/")
 def index():
-    return render_template('index.html', active='index')
+    tiedotteet = Posts.query.all()
+    print(tiedotteet)
+    return render_template('index.html', active='index', tiedotteet=tiedotteet)
 
 
 @app.route("/vuosikello")
@@ -99,6 +101,9 @@ def tili():
 def uusi_tiedote():
     form = LuoTiedote()
     if form.validate_on_submit():
+        post = Posts(title=form.title.data, content=form.content.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
         flash('Tiedote on luotu!')
         return redirect(url_for('index'))
     return render_template('create_post.html', title='Uusi tiedote', active='uusi_tiedote', form=form)
