@@ -36,9 +36,13 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="input-box">
-                    {{ form.remember.label }}
+                <div class="input-box checkbox">
+                    
                     {{ form.remember }}
+                    <!-- Custom checkbox made with CSS -->
+                    {{ form.remember.label }}
+                    <!-- Original checkbox hidden with CSS -->
+                    
                 </div>
             </fieldset>
             <div>
