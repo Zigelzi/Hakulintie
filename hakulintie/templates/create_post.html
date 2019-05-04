@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="flex-container">
+    <div class="box">
+        <form action="" method="POST">
+            {{ form.hidden_tag() }}
+            <fieldset>
+                <legend>
+                    Luo tiedote
+                </legend>
+                <div class="input-box">
+                    {{ form.title.label }}
+                    {{ form.title }}
+                    {% if form.title.errors %}
+                        <div class="error">
+                            {% for error in form.title.errors %}
+                                <span>
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="input-box">
+                    {{ form.content.label }}
+                    {{ form.content }}
+                    {% if form.content.errors %}
+                        <div class="error">
+                            {% for error in form.content.errors %}
+                                <span>
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div>
+                {{ form.submit }}
+            </div>
+        </form>
+        <div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -16,7 +16,7 @@
     </head>
     <body>
         <nav class="nav">
-            <ul class="nav-left">
+            <ul class="">
                 <div class="nav-left">
                     <li class="{% if active=='index' %}active-nav{% endif %}">
                         <a href="{{ url_for('index') }}">Etusivu</a>
@@ -30,6 +30,9 @@
                 </div>
                 <div class="nav-right">
                     {% if current_user.is_authenticated %}
+                    <li class=" {% if active=='uusi_tiedote' %}active-nav{% endif %}">
+                        <a href="{{ url_for('uusi_tiedote') }}">Luo tiedote</a>
+                    </li>
                     <li class=" {% if active=='tili' %}active-nav{% endif %}">
                         <a href="{{ url_for('tili') }}">Tili</a>
                     </li>

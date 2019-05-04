@@ -1,6 +1,6 @@
 from flask import render_template, flash, redirect, url_for, request
 from hakulintie import app, db, bcrypt
-from hakulintie.forms import Rekisteroidy, Kirjaudu, PaivitaTili
+from hakulintie.forms import Rekisteroidy, Kirjaudu, PaivitaTili, LuoTiedote
 from hakulintie.models import Users, Posts
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -74,9 +74,31 @@ def kirjaudu_ulos():
     return redirect(url_for('index'))
 
 
-@app.route('/tili')
+@app.route('/tili', methods=['GET', 'POST'])
 # login_required decorator used to show that this page requires logged in user. Configuration in __init__.py
 @login_required
 def tili():
     form = PaivitaTili()
+    if form.validate_on_submit():
+        current_user.first_name = form.first_name.data
+        current_user.last_name = form.last_name.data
+        current_user.house = form.house.data
+        current_user.email = form.email.data
+        db.session.commit()
+        flash('Tietosi on päivitetty!')
+        return redirect(url_for('tili'))
+    elif request.method == 'GET':
+        form.first_name.data = current_user.first_name
+        form.last_name.data = current_user.last_name
+        form.house.data = current_user.house
+        form.email.data = current_user.email
     return render_template('tili.html', title='Tilini', active='tili', form=form)
+
+@app.route("/post/new", methods=['GET', 'POST'])
+@login_required
+def uusi_tiedote():
+    form = LuoTiedote()
+    if form.validate_on_submit():
+        flash('Tiedote on luotu!')
+        return redirect(url_for('index'))
+    return render_template('create_post.html', title='Uusi tiedote', active='uusi_tiedote', form=form)

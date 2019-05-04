@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from flask_login import current_user
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
 from wtforms.validators import DataRequired, Email, Length, EqualTo, ValidationError
 from hakulintie.models import Users
 
@@ -55,10 +55,14 @@ class PaivitaTili(FlaskForm):
     # Custom validation to validate that email is not in use
     def validate_email(self, email):
 
-        if email.data != current_user.data:
+        if email.data != current_user.email:
             # Get the email from the form and query the DB for it
             email = Users.query.filter_by(email=email.data).first()
             # If the DB query returns something, raise validation error
             if email:
                 raise ValidationError('Tämä sähköpostiosoite on jo käytössä.')
 
+class LuoTiedote(FlaskForm):
+    title = StringField('Tiedotteen otsikko', validators=[DataRequired()])
+    content = TextAreaField('Tiedotteen sisältö', validators=[DataRequired()])
+    submit = SubmitField('Luo tiedote')

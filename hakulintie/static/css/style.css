@@ -51,6 +51,14 @@ input[type="submit"]:hover {
     background-color: #c76259;
 }
 
+textarea {
+    display: block;
+    background: #fdfdfd;
+    border: none;
+    width: 100%;
+    resize: vertical;
+}
+
 /* ------------------------
  ID selectors
  -------------------------- */
