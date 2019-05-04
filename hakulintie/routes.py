@@ -133,3 +133,14 @@ def muokkaa_tiedotetta(tiedote_id):
         form.content.data = tiedote.content
     return render_template('create_post.html', title='Muokkaa tiedotetta', tiedote=tiedote, form=form,
                            legend='Muokkaa tiedotetta')
+
+@app.route("/tiedote/<int:tiedote_id>/poista", methods=['POST'])
+@login_required
+def poista_tiedote(tiedote_id):
+    tiedote = Posts.query.get_or_404(tiedote_id)
+    if tiedote.author != current_user:
+        abort(403)
+    db.session.delete(tiedote)
+    db.session.commit()
+    flash('Tiedote poistettu!')
+    return redirect(url_for('index'))

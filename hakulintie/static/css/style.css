@@ -294,6 +294,24 @@ Class selectors
     background-color: aquamarine;
 }
 
+.inline-form {
+    display: inline-block;
+}
+
+.btn {
+    margin: 20px 50px 10px 0 !important;
+    padding: 10px !important;
+    font-size: 1rem !important;
+}
+
+.btn-modify {
+    background-color: #007fff !important;
+}
+
+.btn-danger {
+    background-color: #7b2d26 !important;
+}
+
 
 /* ------------------------
 Animations and transitions
