@@ -66,3 +66,8 @@ class LuoTiedote(FlaskForm):
     title = StringField('Tiedotteen otsikko', validators=[DataRequired()])
     content = TextAreaField('Tiedotteen sisältö', validators=[DataRequired()])
     submit = SubmitField('Luo tiedote')
+
+class MuokkaaTiedote(FlaskForm):
+    title = StringField('Tiedotteen otsikko', validators=[DataRequired()])
+    content = TextAreaField('Tiedotteen sisältö', validators=[DataRequired()])
+    submit = SubmitField('Muokkaa tiedotetta')

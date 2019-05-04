@@ -1,6 +1,6 @@
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, abort
 from hakulintie import app, db, bcrypt
-from hakulintie.forms import Rekisteroidy, Kirjaudu, PaivitaTili, LuoTiedote
+from hakulintie.forms import Rekisteroidy, Kirjaudu, PaivitaTili, LuoTiedote, MuokkaaTiedote
 from hakulintie.models import Users, Posts
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -106,4 +106,30 @@ def uusi_tiedote():
         db.session.commit()
         flash('Tiedote on luotu!')
         return redirect(url_for('index'))
-    return render_template('create_post.html', title='Uusi tiedote', active='uusi_tiedote', form=form)
+    return render_template('create_post.html', title='Uusi tiedote', active='uusi_tiedote', form=form,
+                           legend='Uusi tiedote')
+
+@app.route("/tiedote/<int:tiedote_id>")
+def tiedote(tiedote_id):
+    tiedote = Posts.query.get_or_404(tiedote_id)
+    return render_template('post.html', title=tiedote.title, tiedote=tiedote)
+
+
+@app.route("/tiedote/<int:tiedote_id>/muokkaa", methods=['GET', 'POST'])
+@login_required
+def muokkaa_tiedotetta(tiedote_id):
+    tiedote = Posts.query.get_or_404(tiedote_id)
+    if tiedote.author != current_user:
+        abort(403)
+    form = MuokkaaTiedote()
+    if form.validate_on_submit():
+        tiedote.title = form.title.data
+        tiedote.content = form.content.data
+        db.session.commit()
+        flash('Tiedote on päivitetty!')
+        return redirect(url_for('tiedote', tiedote_id=tiedote.id))
+    elif request.method == 'GET':
+        form.title.data = tiedote.title
+        form.content.data = tiedote.content
+    return render_template('create_post.html', title='Muokkaa tiedotetta', tiedote=tiedote, form=form,
+                           legend='Muokkaa tiedotetta')
