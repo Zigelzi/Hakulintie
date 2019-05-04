@@ -52,6 +52,8 @@ input[type="submit"]:hover {
 }
 
 textarea {
+    font-family: 'Lato', sans-serif;
+
     display: block;
     background: #fdfdfd;
     border: none;
@@ -125,6 +127,10 @@ Class selectors
     justify-content: flex-start;
 }
 
+.flex-space {
+    justify-content: space-between;
+}
+
 .box {
     width: 40%;
     background-color: rgba(240, 240, 240, 0.95); /* HEX: #F0F0F0 */
@@ -196,6 +202,18 @@ Class selectors
 
 .input-box input:focus {
     border-bottom: 1px solid #007fff;
+}
+
+.input-inline {
+    display: inline-block;
+}
+
+.input-inline:first-of-type {
+    width: 45%;
+    padding-right: 5%;
+}
+.input-inline + .input-inline {
+    width: 49%;
 }
 
 /* Creating custom checkbox */
@@ -296,7 +314,7 @@ Media queries
 --------------------------- */
 
 /* Small and Medium screens */
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 950px) {
 
     .flex-container {
         justify-content: center;
@@ -337,5 +355,10 @@ Media queries
     }
     .box {
         width: 75%;
+    }
+
+    .input-inline {
+        display: inline-block;
+        width: 100% !important;
     }
 }

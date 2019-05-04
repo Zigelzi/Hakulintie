@@ -32,7 +32,7 @@
                 <legend>
                     Päivitä tilisi tietoja
                 </legend>
-                <div class="input-box">
+                <div class="input-box inline-input">
                     {{ form.first_name.label }}
                     {{ form.first_name(placeholder="Syötä etunimesi") }}
                     {% if form.first_name.errors %}
@@ -46,7 +46,7 @@
                     {% endif %}
                     
                 </div>
-                <div class="input-box">
+                <div class="input-box inline-input">
                     {{ form.last_name.label }}
                     {{ form.last_name(placeholder="Syötä sukunimesi") }}
                     {% if form.last_name.errors %}
