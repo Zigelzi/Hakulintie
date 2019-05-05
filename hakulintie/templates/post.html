@@ -8,9 +8,7 @@
             <h3>{{ tiedote.title }} </h3>
             <p class="subtext">Julkaistu: {{ tiedote.date_posted.strftime('%d %m %Y').replace(' ', '.') }} - Tekijä {{ tiedote.author.first_name }} {{ tiedote.author.last_name }}  </p>
             <p class="subtext"></p>
-            <p>
-                {{ tiedote.content }}
-            </p>
+            <p class="post-content">{{ tiedote.content }}</p>
             {% if tiedote.author == current_user %}
             <form class="inline-form" action="{{ url_for('muokkaa_tiedotetta', tiedote_id = tiedote.id) }}" method="GET">
                 <input type="submit" value="Muokkaa" class="btn btn-modify">    
