@@ -313,8 +313,16 @@ Class selectors
     background-color: #007fff !important;
 }
 
+.btn-modify:hover {
+    background-color: #0065ca !important;
+}
+
 .btn-danger {
     background-color: #7b2d26 !important;
+}
+
+.btn-danger:hover {
+    background-color: #b42b1e !important;
 }
 
 
