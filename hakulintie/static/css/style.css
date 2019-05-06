@@ -203,6 +203,7 @@ Class selectors
     margin-top: 20px;
     margin-left: 20px;
     padding: 25px;
+    box-shadow: -3px 1px 2px;
     /*
     animation-name: load-desktop;
     animation-duration: 1.5s;
@@ -426,6 +427,10 @@ Media queries
         animation: load-mobile;
         animation-duration: 1.5s;
         */
+    }
+
+    .nav ul div:last-child {
+        padding-top: 30px;
     }
 
 }
