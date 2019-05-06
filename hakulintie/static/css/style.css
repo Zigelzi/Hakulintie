@@ -98,7 +98,7 @@ Class selectors
     padding-top: 3rem;
 }
 
-.nav2 {
+.nav {
     position: absolute;
     text-align: left;
     top: 100%;
@@ -110,18 +110,18 @@ Class selectors
     transition: transform 400ms ease-in-out;
 }
 
-.nav2 ul {
+.nav ul {
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-.nav2 li {
+.nav li {
     margin-bottom: 1rem;
     margin-left: 1rem;
 }
 
-.nav2 a {
+.nav a {
     text-decoration: none;
     color: white;
     text-transform: uppercase;
@@ -129,7 +129,7 @@ Class selectors
     transition: opacity 150ms ease-in-out;
 }
 
-.nav2 a:hover {
+.nav a:hover {
     color: #c76259;
 }
 
@@ -170,11 +170,11 @@ Class selectors
     top: 6px;
 }
 
-.nav-toggle:checked ~ .nav2 {
+.nav-toggle:checked ~ .nav {
     transform: scale(1, 1) /* Transform to animate the slide-in */
 }
 
-.nav-toggle:checked ~ .nav2 a {
+.nav-toggle:checked ~ .nav a {
     opacity: 1;
     transition: opacity 250ms ease-in-out 250ms;
 }
@@ -459,27 +459,27 @@ Media queries
         display:none;
     }
 
-    .nav2 {
+    .nav {
         all: unset;
         background:rgba(50, 50, 50, 0.8);
     }
 
-    .nav2 ul {
+    .nav ul {
         display: flex;
         justify-content: space-between;
         align-items: center;
          
     }
 
-    .nav2 li {
+    .nav li {
         display: inline-block;
     }
 
-    .nav2 a {
+    .nav a {
         opacity: 1;
     }
 
-    .nav2 ul:last-child {
+    .nav ul:last-child {
         margin-right: 1rem;
     }
 }
