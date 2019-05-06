@@ -87,15 +87,18 @@ Class selectors
     margin-top: 50px;
     height: 40px;
     line-height: 36px;
-    background:rgba(50, 50, 50, 0.8);
-}
-.nav ul {
-    list-style-type: none;  
-    margin: 0;
-    padding: 0 0;
+    text-transform: uppercase;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+    position:relative;
+}
+.nav ul {
+    background:rgba(50, 50, 50, 0.8);
+    box-sizing: border-box;
+    list-style-type: none;  
+    margin: 0;
+    padding: 0 0;
 }
 
 .nav li {
