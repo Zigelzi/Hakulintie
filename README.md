@@ -10,8 +10,8 @@ Features:
 - Responsive layout with self-made CSS
 
 # Stack
-Backend: Python with Flask
-Frontend: Custom handmade CSS
+- Backend: Python with Flask
+- Frontend: Custom handmade CSS
 
 # Demos of the site
 Index page with announcements for tenants
