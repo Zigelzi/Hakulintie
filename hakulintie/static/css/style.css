@@ -248,6 +248,15 @@ Class selectors
     margin: 0;
 }
 
+.post a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.post a:hover {
+    color: #636262;
+}
+
 .post-content {
     white-space: pre-wrap;
 }
@@ -495,7 +504,7 @@ Media queries
     }
     
     .box {
-        width: 75%;
+        width: 90%;
     }
 
     .input-inline {
@@ -518,7 +527,7 @@ Media queries
         display: flex;
         justify-content: space-between;
         align-items: center;
-         
+        margin-top: 15px;
     }
 
     .nav li {

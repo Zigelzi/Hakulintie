@@ -7,7 +7,7 @@ from flask_login import login_user, current_user, logout_user, login_required
 
 @app.route("/")
 def index():
-    tiedotteet = Posts.query.all()
+    tiedotteet = Posts.query.order_by(Posts.date_posted.desc()).all()
     print(tiedotteet)
     return render_template('index.html', active='index', tiedotteet=tiedotteet)
 
@@ -87,7 +87,7 @@ def tili():
         current_user.house = form.house.data
         current_user.email = form.email.data
         db.session.commit()
-        flash('Tietosi on päivitetty!', 'success')
+        flash('Tiedot päivitetty!', 'success')
         return redirect(url_for('tili'))
     elif request.method == 'GET':
         form.first_name.data = current_user.first_name
@@ -104,7 +104,7 @@ def uusi_tiedote():
         post = Posts(title=form.title.data, content=form.content.data, author=current_user)
         db.session.add(post)
         db.session.commit()
-        flash('Tiedote on luotu!', 'success')
+        flash('Tiedote luotu!', 'success')
         return redirect(url_for('index'))
     return render_template('create_post.html', title='Uusi tiedote', active='uusi_tiedote', form=form,
                            legend='Uusi tiedote')
