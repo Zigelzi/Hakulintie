@@ -14,22 +14,22 @@ Features:
 - Frontend: Custom handmade CSS
 
 # Demos of the site
-*Index page with announcements for tenants*
+### Index page with announcements for tenants
 
 ![Index_demo](demo/Index_Responsiivisyys.gif)
 
-*Creating the announcement*
+### Creating the announcement
 
 ![Tiedote_demo](demo/LuoTiedote.gif)
 
-*Editing the announcements*
+### Editing the announcements
 
 ![Tiedote_demo2](demo/MuokkaaTiedote.gif)
 
-*Expandable mobile navigation*
+### Expandable mobile navigation
 ![Mobile_nav](demo/MobiiliNav.gif)
 
-*Creating and logging in on mobile*
+### Creating and logging in on mobile
 
 ![Mobile_nav](demo/LuoKirjaudu.gif)
 
