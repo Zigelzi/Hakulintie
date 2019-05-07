@@ -9,7 +9,7 @@
         <script type="text/javascript" src="{{ url_for('static', filename='js/scripts.js') }}"></script>
         
         {% if title %}
-            <title>Hakulinpuisto - {{ title }}</title>    
+            <title>{{ title }} - Hakulinpuisto</title>    
         {% else %}
             <title>Hakulinpuisto</title>
         {% endif %}
@@ -56,16 +56,18 @@
             <label for="nav-toggle" class="nav-toggle-label">
                 <span></span>
             </label>
-        </header>
+        </header>  
+        <div class="note-container">
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 {% for category, message in messages %}
-                <div class="success">
+                <div class="note note-{{ category }}">
                     {{ message }}
                 </div>
                 {% endfor %}
             {% endif %}
         {% endwith %}
+        </div> 
         <div class="body-content">
         {% block content %}
         {% endblock %}

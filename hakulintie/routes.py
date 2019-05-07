@@ -42,9 +42,9 @@ def rekisteroidy():
                      password=hash_pw)
         db.session.add(user)
         db.session.commit()
-        flash(f'Tunnuksesi on luotu, voit nyt kirjautua sisään.')
+        flash(f'Tunnuksesi on luotu, voit nyt kirjautua sisään.', 'success')
         return redirect(url_for('kirjaudu'))
-    return render_template('rekisteroidy.html', title='Rekisteröidy', form=form)
+    return render_template('rekisteroidy.html', title='Rekisteröidy', form=form, active='rekisteroidy')
 
 
 @app.route("/kirjaudu", methods=["GET", "POST"])
@@ -66,8 +66,8 @@ def kirjaudu():
             return redirect(next_page) if next_page else redirect(url_for('index'))
         else:
             # Login is failed and prompt the user for checking the email/password
-            flash('Kirjautuminen epäonnistui. Tarkasta käyttäjänimi ja salasana.')
-    return render_template('kirjaudu.html', title='Kirjaudu', form=form)
+            flash('Kirjautuminen epäonnistui. Tarkasta käyttäjänimi ja salasana.', 'alert')
+    return render_template('kirjaudu.html', title='Kirjaudu', form=form, active='kirjaudu')
 
 
 @app.route('/kirjaudu_ulos')
@@ -87,7 +87,7 @@ def tili():
         current_user.house = form.house.data
         current_user.email = form.email.data
         db.session.commit()
-        flash('Tietosi on päivitetty!')
+        flash('Tietosi on päivitetty!', 'success')
         return redirect(url_for('tili'))
     elif request.method == 'GET':
         form.first_name.data = current_user.first_name
@@ -104,7 +104,7 @@ def uusi_tiedote():
         post = Posts(title=form.title.data, content=form.content.data, author=current_user)
         db.session.add(post)
         db.session.commit()
-        flash('Tiedote on luotu!')
+        flash('Tiedote on luotu!', 'success')
         return redirect(url_for('index'))
     return render_template('create_post.html', title='Uusi tiedote', active='uusi_tiedote', form=form,
                            legend='Uusi tiedote')
@@ -126,7 +126,7 @@ def muokkaa_tiedotetta(tiedote_id):
         tiedote.title = form.title.data
         tiedote.content = form.content.data
         db.session.commit()
-        flash('Tiedote on päivitetty!')
+        flash('Tiedote on päivitetty!', 'success')
         return redirect(url_for('tiedote', tiedote_id=tiedote.id))
     elif request.method == 'GET':
         form.title.data = tiedote.title
@@ -142,5 +142,5 @@ def poista_tiedote(tiedote_id):
         abort(403)
     db.session.delete(tiedote)
     db.session.commit()
-    flash('Tiedote poistettu!')
+    flash('Tiedote poistettu!', 'success')
     return redirect(url_for('index'))

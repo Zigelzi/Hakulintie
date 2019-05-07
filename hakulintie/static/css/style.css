@@ -28,7 +28,7 @@ fieldset {
 }
 
 fieldset legend {
-    font-size: 1.5rem; /* 24 / 16 px */
+    font-size: 1.5rem; /* 24/16 px */
     font-weight: 500;
     
 }
@@ -391,6 +391,36 @@ Class selectors
     background-color: #b42b1e !important;
 }
 
+.note-container {
+    position: relative;
+    opacity: 0;
+    animation: pop-right ease-in;
+    animation-duration: 6s;
+    transform-origin: left;
+}
+
+.note {
+    position: fixed;
+    text-align: center;
+    top: 60px;
+    left: 45%;
+    padding: 12px 10px;
+    border-radius: 2px;
+    width: 500px;
+    z-index: 998;
+    transform: translate(-50%); /* Centering the container horizontally to middle of the screen */
+}
+
+.note-success {
+    background-color: #4bb543;
+    color: #ebffe9;
+}
+
+.note-alert {
+    background-color: #cc0000;
+    color: #d1b5b5;
+}
+
 
 /* ------------------------
 Animations and transitions
@@ -404,6 +434,21 @@ Animations and transitions
 @keyframes load-mobile {
     0% {margin-left: -250%;}
     100% {margin-left: 5%;}
+}
+
+@keyframes pop-right {
+    0% {
+        opacity: 0;
+     }
+     15% {
+        opacity: 1;
+     }
+     75% {
+         opacity: 1;
+     }
+    100% {
+        opacity: 0;
+     }
 }
 
 /* ------------------------
