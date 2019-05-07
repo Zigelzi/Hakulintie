@@ -2,3 +2,5 @@
 
 Purpose of this webiste is to practice styling with CSS and building 
 small website for my housing association to inform the tenants.
+
+![Test](https://gfycat.com/GroundedSilverGuernseycow)
