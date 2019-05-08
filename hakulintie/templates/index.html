@@ -27,7 +27,6 @@
             <div class="post">
                 <h3><a href="{{ url_for('tiedote', tiedote_id = tiedote.id) }}">{{ tiedote.title }}</a></h3>
                 <p class="subtext">Julkaistu: {{ tiedote.date_posted.strftime('%d %m %Y').replace(' ', '.') }} - Tekijä {{ tiedote.author.first_name }} {{ tiedote.author.last_name }}  </p>
-                <p class="subtext"></p>
                 <p class="post-content">{{ tiedote.content }}</p>
             </div> 
             {% endfor %} 

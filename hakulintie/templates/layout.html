@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <link href="https://fonts.googleapis.com/css?family=Lato|Merriweather" rel="stylesheet">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-        <script type="text/javascript" src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/scripts.js') }}" defer></script>
         
         {% if title %}
             <title>{{ title }} - Hakulinpuisto</title>    
