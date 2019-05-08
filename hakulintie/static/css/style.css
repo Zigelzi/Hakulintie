@@ -37,7 +37,7 @@ input[type="submit"] {
     
     font-size: 1.2rem;
     
-    background: #7b2d26;
+    background: #007fff;
     color: #fff;
 
     padding: 15px;
@@ -50,7 +50,7 @@ input[type="submit"] {
 input[type="submit"]:hover {
     cursor: pointer;
     border-radius: 5px;
-    background-color: #c76259;
+    background-color: #0065ca;
 }
 
 textarea {

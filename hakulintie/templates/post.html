@@ -20,10 +20,10 @@
         <div class="modal">
             <div class="modal-content">
                 <span class="close-button">X</span>
-                <form class="inline-form" action="{{ url_for('poista_tiedote', tiedote_id=tiedote.id) }}" method="POST">
+                <form class="" action="{{ url_for('poista_tiedote', tiedote_id=tiedote.id) }}" method="POST">
                     <h4>Haluatko varmasti poistaa tiedotteen?</h4>
                     <p>Tätä muutosta ei voi peruuttaa</p>
-                    <input type="submit" value="Poista" class="btn">    
+                    <input type="submit" value="Poista" class="btn btn-danger">    
                 </form>
             </div>
         </div>
