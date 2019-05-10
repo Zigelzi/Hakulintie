@@ -15,12 +15,39 @@ body {
     font-family: 'Lato', sans-serif;
     margin: 0;
     padding: 0;
-
+    font-size: 16px;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Merriweather', serif;
+    font-weight: 400;
 }
+
+h1 {
+    font-size: 2.488em;
+}
+
+h2 {
+    font-size: 2.074em;
+}
+
+h3 {
+    font-size: 1.728em;
+}
+
+h4 {
+    font-size: 1.44em;
+}
+
+h5 {
+    font-size: 1.2em;
+}
+
+p {
+    line-height: 1.5;
+    
+}
+
 fieldset {
     padding: 25px;
     border: none;
@@ -28,7 +55,7 @@ fieldset {
 }
 
 fieldset legend {
-    font-size: 1.5rem; /* 24/16 px */
+    font-size: 1.5rem; /* 24 px */
     font-weight: 500;
     
 }
@@ -197,7 +224,7 @@ Class selectors
 }
 
 .box {
-    width: 40%;
+    max-width: 33rem;
     background-color: rgba(240, 240, 240, 0.95); /* HEX: #F0F0F0 */
     border-radius: 20px;
     margin-top: 20px;
