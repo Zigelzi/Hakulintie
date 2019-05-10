@@ -15,7 +15,7 @@ body {
     font-family: 'Lato', sans-serif;
     margin: 0;
     padding: 0;
-    font-size: 16px;
+    font-size: 1em; /* 16px, default */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -224,12 +224,12 @@ Class selectors
 }
 
 .box {
-    max-width: 33rem;
+    width: 36rem; /* 576px */
     background-color: rgba(240, 240, 240, 0.95); /* HEX: #F0F0F0 */
     border-radius: 20px;
     margin-top: 20px;
     margin-left: 20px;
-    padding: 25px;
+    padding: 1.5626em 3em;
     box-shadow: -3px 1px 2px;
     /*
     animation-name: load-desktop;
@@ -441,9 +441,9 @@ Class selectors
     text-align: center;
     top: 60px;
     left: 45%;
-    padding: 12px 10px;
+    padding: 0.75em 0.625em;
     border-radius: 2px;
-    width: 500px;
+    width: 32em;
     z-index: 998;
     transform: translate(-50%); /* Centering the container horizontally to middle of the screen */
 }
