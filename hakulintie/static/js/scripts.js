@@ -2,7 +2,7 @@ var modal = document.querySelector('.modal')
 var trigger = document.querySelector('.btn-danger')
 var closeButton = document.querySelector('.close-button')
 
-// Toggle the modal css property.
+// Toggle the modal CSS property.
 function toggleModal() {
     modal.classList.toggle('show-modal');
 }
