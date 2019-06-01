@@ -1,6 +1,7 @@
 from flask import render_template, flash, redirect, url_for, request, abort
 from hakulintie import app, db, bcrypt
-from hakulintie.forms import Rekisteroidy, Kirjaudu, PaivitaTili, LuoTiedote, MuokkaaTiedote
+from hakulintie.forms import (Rekisteroidy, Kirjaudu, PaivitaTili,
+                              LuoTiedote, MuokkaaTiedote, PalautaSalasana, PaivitaSalasana)
 from hakulintie.models import Users, Posts
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -25,7 +26,7 @@ def yhteystiedot():
 @app.route('/rekisteroidy', methods=["GET", "POST"])
 def rekisteroidy():
 
-    # If current user exists, redirect to home.
+    # If user is already logged in, redirect to home.
     if current_user.is_authenticated:
         return redirect(url_for('index'))
 
@@ -49,7 +50,7 @@ def rekisteroidy():
 
 @app.route("/kirjaudu", methods=["GET", "POST"])
 def kirjaudu():
-    # If current user exists, redirect to home.
+    # If user is already logged in, redirect to home.
     if current_user.is_authenticated:
         return redirect(url_for('index'))
 
@@ -144,3 +145,37 @@ def poista_tiedote(tiedote_id):
     db.session.commit()
     flash('Tiedote poistettu!', 'success')
     return redirect(url_for('index'))
+
+def send_reset_email(user):
+    pass
+
+@app.route("/palauta_salasana", methods=['GET', 'POST'])
+def palauta_salasana():
+    # If user is already logged in, redirect to home.
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+
+    form = PalautaSalasana()
+    if form.validate_on_submit():
+        user = Users.query.filter_by(email=form.email.data).first()
+        send_reset_email(user)
+        flash('Salasanan palauttamiseen tarvittavat tiedot ovat lähetetty antamaasi sähköpostiosoitteeseen', 'success')
+        return redirect(url_for('kirjaudu'))
+    # Get expiration duration of the token and pass it to template
+    expires_min = int(Users.expires_sec / 60)
+    return render_template('palauta_salasana.html', title='Palauta salasana', form=form, expires_min=expires_min)
+
+@app.route("/paivita_salasana/<token>", methods=['GET', 'POST'])
+def paivita_salasana(token):
+    # If user is already logged in, redirect to home.
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+
+    user = Users.verify_reset_token(token)
+    expires_min = int(Users.expires_sec / 60)
+    if user is None:
+        flash(f'Salasanan palautustunniste on virheellinen tai umpeutunut ({expires_min} min)', 'alert')
+        redirect(url_for('palauta_salasana'))
+
+    form = PaivitaSalasana()
+    return render_template('paivita_salasana.html', title='Päivitä salasana', form=form)

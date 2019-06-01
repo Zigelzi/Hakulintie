@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="flex-container">
+    <div class="box">
+        <form action="" method="POST">
+            {{ form.hidden_tag() }}
+            <fieldset>
+                <legend>
+                    Palauta salasana
+                </legend>
+                <p>Syötä kirjautumiseen käyttämäsi sähköposti. Saat sähköpostiisi linkin uuden salasanan luomista varten.</p>
+                <p>Linkki on voimassa {{ expires_min }} minuuttia</p>
+                <div class="input-box">
+                    {{ form.email.label }}
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                        <div class="error">
+                            {% for error in form.email.errors %}
+                                <span>
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div>
+                {{ form.submit }}
+            </div>
+        </form>
+        <div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

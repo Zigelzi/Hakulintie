@@ -72,3 +72,24 @@ class MuokkaaTiedote(FlaskForm):
     title = StringField('Tiedotteen otsikko', validators=[DataRequired(message=data_req_msg)])
     content = TextAreaField('Tiedotteen sisältö', validators=[DataRequired(message=data_req_msg)])
     submit = SubmitField('Muokkaa tiedotetta')
+
+class PalautaSalasana(FlaskForm):
+    email = StringField('Sähköposti',
+                        validators=[DataRequired(message=data_req_msg), Email(message="Ei voimassa oleva sähköposti")])
+    submit = SubmitField('Palauta salana')
+    
+    def validate_email(self, email):
+        # Get the email from the form and query the DB for it
+        email = Users.query.filter_by(email=email.data).first()
+
+        # If the DB query doesn't return anything the user haven't even registered.
+        if email is None:
+            raise ValidationError('Tiliä ei ole olemassa tällä sähköpostiosoitteella. Luo tili kirjautuaksesi sisään.')
+
+class PaivitaSalasana(FlaskForm):
+    password = PasswordField('Uusi salasana',
+                             validators=[DataRequired(message=data_req_msg),
+                                         Length(min=8, message="Salasanan täytyy olla vähintään 8 merkkiä pitkä")])
+    confirm_pw = PasswordField('Vahvista salasana',
+                               validators= [DataRequired(message=data_req_msg), EqualTo('password', message="Salasanat eivät täsmää")])
+    submit = SubmitField('Päivitä salasana')

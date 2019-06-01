@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
+from flask_mail import Mail
 from hakulintie.config import Config, ProdConfig, DevConfig
 from flask_bcrypt import Bcrypt
 
@@ -15,6 +16,8 @@ login_manager = LoginManager(app)
 login_manager.login_view = 'kirjaudu'
 login_manager.login_message = 'Kirjaudu sisään päästäksesi tälle sivulle'
 
+#TODO: Set up the Hakulintie email account as environ variable to enable emailing.
+mail = Mail(app)
 
 from hakulintie import routes
 

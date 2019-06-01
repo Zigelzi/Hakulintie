@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="flex-container">
+    <div class="box">
+        <form action="" method="POST">
+            {{ form.hidden_tag() }}
+            <fieldset>
+                <legend>
+                    Päivitä salasana
+                </legend>
+                <p>Luo uusi salasana unohtuneen tilalle</p>
+                <div class="input-box">
+                    {{ form.password.label }}
+                    {{ form.password }}
+                    {% if form.password.errors %}
+                        <div class="error">
+                            {% for error in form.password.errors %}
+                                <span>
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="input-box">
+                    {{ form.confirm_pw.label }}
+                    {{ form.confirm_pw }}
+                    {% if form.confirm_pw.errors %}
+                        <div class="error">
+                            {% for error in form.confirm_pw.errors %}
+                                <span>
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div>
+                {{ form.submit }}
+            </div>
+        </form>
+        <div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
