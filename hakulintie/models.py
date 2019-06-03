@@ -6,6 +6,11 @@ from flask_login import UserMixin
 def load_user(user_id):
     return Users.query.get(int(user_id))
 
+user_roles = db.Table('roles',
+                db.Column('users_id', db.Integer, db.ForeignKey('users.id')),
+                db.Column('role_id', db.Integer, db.ForeignKey('role.id'))
+                )
+
 # Creating the user and post table models
 class Users(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -15,11 +20,22 @@ class Users(db.Model, UserMixin):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(60), nullable=False)
     posts = db.relationship('Posts', backref='author', lazy=True)
+    roles = db.relationship('Role',
+                            secondary=user_roles,
+                            backref=db.backref('users'), lazy='dynamic'
+                            )
+
+    # Method for checking if the user has certain roles
+    def has_role(self, name):
+        for role in self.roles:
+            if role.name == name:
+                return True
+            return False
 
     def __repr__(self):
         return f'User <{self.email} | {self.first_name} | {self.last_name} | {self.house}>'
 
-
+# Announcement posts model
 class Posts(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120), nullable=False)
@@ -29,3 +45,12 @@ class Posts(db.Model):
 
     def __repr__(self):
         return f'Post <{self.title} | {self.date_posted}>'
+
+# User roles model
+class Role(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(50), unique=True)
+    description = db.Column(db.String(255))
+
+    def __repr__(self):
+        return f'Role <{self.name} | {self.description}>'
